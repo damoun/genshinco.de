@@ -76,13 +76,14 @@
             align-items: center;
         }
 
-        .iframe-container {
+        #iframe-container {
             width: 80%;
             height: 60%;
             border: 3px solid var(--maxContrastColor);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+            display: none;
         }
 
         iframe {
@@ -146,6 +147,21 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        /* Spinning loader styling */
+        #loader {
+            border: 8px solid #E7F2F7;
+            border-top: 8px solid #7EB8D6;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 
@@ -156,8 +172,9 @@
 
     <!-- Background Image and Airtable Embed Section -->
     <div class="background">
-        <div class="iframe-container">
-            <iframe src="https://airtable.com/embed/appWcSiS4PtBr5SES/shrCkwJOJQ0X5thDB" title="Genshin Impact Codes"></iframe>
+        <div id="loader"></div>
+        <div id="iframe-container">
+            <iframe src="https://airtable.com/embed/appWcSiS4PtBr5SES/shrCkwJOJQ0X5thDB" title="Genshin Impact Codes" onload="showIframe()"></iframe>
         </div>
     </div>
 
@@ -190,6 +207,11 @@
             if (event.target == modal) {
                 modal.style.display = "none";
             }
+        }
+
+        function showIframe() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("iframe-container").style.display = "block";
         }
     </script>
 
