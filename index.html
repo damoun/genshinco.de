@@ -4,19 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get the latest Genshin Impact reward codes for exclusive in-game rewards. Updated regularly!">
-    <meta name="keywords" content="Genshin Impact, reward codes, gaming, free rewards, game codes, genshinco.de, genshin code">
+    <meta name="description" content="Discover the latest Genshin Impact reward codes for December 2024. Redeem exclusive in-game rewards. Updated daily on GenshinCo.de!">
+    <meta name="keywords" content="Genshin Impact, reward codes, gaming rewards, free Genshin codes, genshinco.de">
     <meta name="author" content="GenshinCo.de">
+    <link rel="canonical" href="https://genshinco.de">
 
-    <!-- HTML Meta Tags -->
-    <title>Genshin Impact Codes for December 2024</title>
-    <meta name="description" content="Find the latest Genshin Impact codes and redeem exclusive in-game rewards!">
+    <title>Genshin Impact Codes | Exclusive Rewards (Dec 2024)</title>
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:url" content="https://genshinco.de">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Genshin Impact Codes for December 2024">
-    <meta property="og:description" content="Find the latest Genshin Impact codes and redeem exclusive in-game rewards!">
+    <meta property="og:description" content="Discover the latest Genshin Impact codes and redeem exclusive in-game rewards!">
     <meta property="og:image" content="https://genshinco.de/preview.png">
 
     <!-- Twitter Meta Tags -->
@@ -24,13 +23,27 @@
     <meta property="twitter:domain" content="genshinco.de">
     <meta property="twitter:url" content="https://genshinco.de">
     <meta name="twitter:title" content="Genshin Impact Codes for December 2024">
-    <meta name="twitter:description" content="Find the latest Genshin Impact codes and redeem exclusive in-game rewards!">
+    <meta name="twitter:description" content="Discover the latest Genshin Impact codes and redeem exclusive in-game rewards!">
     <meta name="twitter:image" content="https://genshinco.de/preview.png">
 
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-    <!-- Preload and Prefetch Resources -->
-    <link rel="preload" href="/background.png" as="image">
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Genshin Impact Codes for December 2024",
+            "description": "Find the latest Genshin Impact codes and redeem exclusive in-game rewards. Updated regularly on GenshinCo.de.",
+            "url": "https://genshinco.de",
+            "publisher": {
+                "@type": "Organization",
+                "name": "GenshinCo.de",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://genshinco.de/preview.png"
+                }
+            }
+        }
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-D7SJ1CFN3S"></script>
@@ -64,6 +77,21 @@
             text-align: center;
             padding: 0;
             margin: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: block;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin: 0;
+            padding: 0;
         }
 
         .background {
@@ -163,28 +191,43 @@
             100% { transform: rotate(360deg); }
         }
     </style>
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preload" href="/background.png" as="image">
 </head>
 
 <body>
-
-    <!-- Floating Button to Add Code -->
-    <button class="floating-button" id="myBtn">Submit a new Code</button>
-
-    <!-- Background Image and Airtable Embed Section -->
-    <div class="background">
-        <div id="loader"></div>
-        <div id="iframe-container">
-            <iframe src="https://airtable.com/embed/appWcSiS4PtBr5SES/shrRGz7ralypYiWgF?viewControls=on" title="Genshin Impact Codes" onload="showIframe()"></iframe>
+    <main>
+        <!-- Background Image and Airtable Embed Section -->
+        <div class="background">
+            <header>
+                <h1>Genshin Impact Codes for December 2024</h1>
+                <p>Get the latest codes to unlock exclusive in-game rewards.</p>
+                <!-- Floating Button to Add Code -->
+                <button class="floating-button" id="myBtn">Submit a New Code</button>
+            </header>
+            <div id="loader"></div>
+            <div id="iframe-container">
+                <iframe src="https://airtable.com/embed/appWcSiS4PtBr5SES/shrRGz7ralypYiWgF?viewControls=on" 
+                        title="Genshin Impact Codes" 
+                        onload="showIframe()"
+                        alt="Latest Genshin Impact Codes"></iframe>
+            </div>
         </div>
-    </div>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <iframe src="https://airtable.com/embed/appWcSiS4PtBr5SES/pag2p8r0gopKtTdwN/form" title="Submit a new Code" height="400" style="border:none;"></iframe>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <iframe src="https://airtable.com/embed/appWcSiS4PtBr5SES/pag2p8r0gopKtTdwN/form" 
+                        title="Submit a New Code" 
+                        height="400" 
+                        style="border:none;" 
+                        loading="lazy" 
+                        alt="Submit Genshin Codes Form"></iframe>
+            </div>
         </div>
-    </div>
+    </main>
 
     <script>
         // Get modal and button elements
@@ -214,7 +257,6 @@
             document.getElementById("iframe-container").style.display = "block";
         }
     </script>
-
 </body>
 
 </html>
