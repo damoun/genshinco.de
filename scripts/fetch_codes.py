@@ -15,6 +15,8 @@ MAX_CODES = 10
 CODE_PATTERN = re.compile(r'^[A-Z0-9]{6,16}$')
 MAX_REWARDS_LEN = 200
 HTML_TAG_PATTERN = re.compile(r'<[^>]+>')
+SOURCE_HOYO = "hoyo-codes"
+SOURCE_MANUAL = "manual"
 
 
 def sanitize_rewards(text: str) -> str:
@@ -58,7 +60,7 @@ def fetch_codes() -> list[dict]:
         if isinstance(rewards_raw, list):
             rewards_raw = ", ".join(str(r) for r in rewards_raw)
         rewards = sanitize_rewards(rewards_raw)
-        valid.append({"code": code, "rewards": rewards, "source": "hoyo-codes"})
+        valid.append({"code": code, "rewards": rewards, "source": SOURCE_HOYO})
         if len(valid) >= MAX_CODES:
             print(f"WARNING: capped at {MAX_CODES} codes", file=sys.stderr)
             break
@@ -73,13 +75,13 @@ def load_existing() -> list[dict]:
         data = json.loads(CODES_JSON.read_text())
         if isinstance(data, list):
             return data
-    except (json.JSONDecodeError, OSError):
-        pass
+    except (json.JSONDecodeError, OSError) as e:
+        print(f"WARNING: could not read existing codes.json: {e}", file=sys.stderr)
     return []
 
 
 def merge(existing: list[dict], fetched: list[dict]) -> list[dict]:
-    manual = [e for e in existing if e.get("source") == "manual"]
+    manual = [e for e in existing if e.get("source") == SOURCE_MANUAL]
     api_codes = {e["code"] for e in fetched}
     # Keep manual codes not overridden by API
     result = [m for m in manual if m["code"] not in api_codes]

@@ -231,6 +231,12 @@
             gap: 20px;
         }
 
+        .codes-message {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
         .code-card {
             background: var(--bg-card);
             border: 1px solid var(--border-card);
@@ -412,7 +418,7 @@
             <p class="codes-subtitle">Hit "Redeem" and the code is already filled in on the HoYoverse page. Just log in and confirm.</p>
 
             <div id="codes-grid" class="codes-grid" aria-live="polite">
-                <p id="codes-loading" style="grid-column:1/-1;text-align:center;color:var(--text-secondary);">Loading codes…</p>
+                <p id="codes-loading" class="codes-message">Loading codes…</p>
             </div>
         </section>
 
@@ -474,6 +480,10 @@
         (function() {
             var grid = document.getElementById('codes-grid');
             var loading = document.getElementById('codes-loading');
+            if (!grid || !loading) {
+                console.error('codes: required DOM elements missing');
+                return;
+            }
 
             fetch('./codes.json')
                 .then(function(r) {
@@ -484,11 +494,12 @@
                     loading.remove();
                     if (!Array.isArray(codes) || codes.length === 0) {
                         var msg = document.createElement('p');
-                        msg.style.cssText = 'grid-column:1/-1;text-align:center;color:var(--text-secondary);';
+                        msg.className = 'codes-message';
                         msg.textContent = 'No active codes right now. Check back soon.';
                         grid.appendChild(msg);
                         return;
                     }
+                    var fragment = document.createDocumentFragment();
                     codes.forEach(function(entry) {
                         var code = String(entry.code || '');
                         var rewards = String(entry.rewards || '');
@@ -525,8 +536,9 @@
                         card.appendChild(codeEl);
                         card.appendChild(rewardsEl);
                         card.appendChild(actions);
-                        grid.appendChild(card);
+                        fragment.appendChild(card);
                     });
+                    grid.appendChild(fragment);
                 })
                 .catch(function(err) {
                     loading.textContent = 'Failed to load codes. Please refresh the page.';
