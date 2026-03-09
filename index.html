@@ -411,60 +411,8 @@
             <h2>Active Codes</h2>
             <p class="codes-subtitle">Hit "Redeem" and the code is already filled in on the HoYoverse page. Just log in and confirm.</p>
 
-            <div class="codes-grid">
-                <div class="code-card">
-                    <div class="code-string">GENSHINGIFT</div>
-                    <div class="code-rewards">60 Primogems + 10,000 Mora</div>
-                    <div class="code-actions">
-                        <button class="btn btn-copy" onclick="copyCode(this, 'GENSHINGIFT')">Copy</button>
-                        <a class="btn btn-redeem" href="https://genshin.hoyoverse.com/en/gift?code=GENSHINGIFT" target="_blank" rel="noopener">Redeem</a>
-                    </div>
-                </div>
-
-                <div class="code-card">
-                    <div class="code-string">WT7D3FXHZXRH</div>
-                    <div class="code-rewards">60 Primogems + 5 Adventurer's Experience</div>
-                    <div class="code-actions">
-                        <button class="btn btn-copy" onclick="copyCode(this, 'WT7D3FXHZXRH')">Copy</button>
-                        <a class="btn btn-redeem" href="https://genshin.hoyoverse.com/en/gift?code=WT7D3FXHZXRH" target="_blank" rel="noopener">Redeem</a>
-                    </div>
-                </div>
-
-                <div class="code-card">
-                    <div class="code-string">LANTERNRITE26</div>
-                    <div class="code-rewards">100 Primogems + 50,000 Mora</div>
-                    <div class="code-actions">
-                        <button class="btn btn-copy" onclick="copyCode(this, 'LANTERNRITE26')">Copy</button>
-                        <a class="btn btn-redeem" href="https://genshin.hoyoverse.com/en/gift?code=LANTERNRITE26" target="_blank" rel="noopener">Redeem</a>
-                    </div>
-                </div>
-
-                <div class="code-card">
-                    <div class="code-string">GENSHIN5ANNI</div>
-                    <div class="code-rewards">60 Primogems + 3 Hero's Wit</div>
-                    <div class="code-actions">
-                        <button class="btn btn-copy" onclick="copyCode(this, 'GENSHIN5ANNI')">Copy</button>
-                        <a class="btn btn-redeem" href="https://genshin.hoyoverse.com/en/gift?code=GENSHIN5ANNI" target="_blank" rel="noopener">Redeem</a>
-                    </div>
-                </div>
-
-                <div class="code-card">
-                    <div class="code-string">TEYVAT2026NEW</div>
-                    <div class="code-rewards">60 Primogems + 5 Mystic Enhancement Ore</div>
-                    <div class="code-actions">
-                        <button class="btn btn-copy" onclick="copyCode(this, 'TEYVAT2026NEW')">Copy</button>
-                        <a class="btn btn-redeem" href="https://genshin.hoyoverse.com/en/gift?code=TEYVAT2026NEW" target="_blank" rel="noopener">Redeem</a>
-                    </div>
-                </div>
-
-                <div class="code-card">
-                    <div class="code-string">XTNTBBHMVZ99</div>
-                    <div class="code-rewards">60 Primogems + 10,000 Mora</div>
-                    <div class="code-actions">
-                        <button class="btn btn-copy" onclick="copyCode(this, 'XTNTBBHMVZ99')">Copy</button>
-                        <a class="btn btn-redeem" href="https://genshin.hoyoverse.com/en/gift?code=XTNTBBHMVZ99" target="_blank" rel="noopener">Redeem</a>
-                    </div>
-                </div>
+            <div id="codes-grid" class="codes-grid" aria-live="polite">
+                <p id="codes-loading" style="grid-column:1/-1;text-align:center;color:var(--text-secondary);">Loading codes…</p>
             </div>
         </section>
 
@@ -522,6 +470,69 @@
                 }, 2000);
             });
         }
+
+        (function() {
+            var grid = document.getElementById('codes-grid');
+            var loading = document.getElementById('codes-loading');
+
+            fetch('./codes.json')
+                .then(function(r) {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    return r.json();
+                })
+                .then(function(codes) {
+                    loading.remove();
+                    if (!Array.isArray(codes) || codes.length === 0) {
+                        var msg = document.createElement('p');
+                        msg.style.cssText = 'grid-column:1/-1;text-align:center;color:var(--text-secondary);';
+                        msg.textContent = 'No active codes right now. Check back soon.';
+                        grid.appendChild(msg);
+                        return;
+                    }
+                    codes.forEach(function(entry) {
+                        var code = String(entry.code || '');
+                        var rewards = String(entry.rewards || '');
+                        var redeemUrl = 'https://genshin.hoyoverse.com/en/gift?code=' + encodeURIComponent(code);
+
+                        var card = document.createElement('div');
+                        card.className = 'code-card';
+
+                        var codeEl = document.createElement('div');
+                        codeEl.className = 'code-string';
+                        codeEl.textContent = code;
+
+                        var rewardsEl = document.createElement('div');
+                        rewardsEl.className = 'code-rewards';
+                        rewardsEl.textContent = rewards;
+
+                        var actions = document.createElement('div');
+                        actions.className = 'code-actions';
+
+                        var copyBtn = document.createElement('button');
+                        copyBtn.className = 'btn btn-copy';
+                        copyBtn.textContent = 'Copy';
+                        copyBtn.addEventListener('click', function() { copyCode(copyBtn, code); });
+
+                        var redeemLink = document.createElement('a');
+                        redeemLink.className = 'btn btn-redeem';
+                        redeemLink.href = redeemUrl;
+                        redeemLink.target = '_blank';
+                        redeemLink.rel = 'noopener';
+                        redeemLink.textContent = 'Redeem';
+
+                        actions.appendChild(copyBtn);
+                        actions.appendChild(redeemLink);
+                        card.appendChild(codeEl);
+                        card.appendChild(rewardsEl);
+                        card.appendChild(actions);
+                        grid.appendChild(card);
+                    });
+                })
+                .catch(function(err) {
+                    loading.textContent = 'Failed to load codes. Please refresh the page.';
+                    console.error('codes.json fetch error:', err);
+                });
+        })();
     </script>
 </body>
 
