@@ -98,5 +98,5 @@
       showBanner();
     }
   }
-  // If stored === 'denied', do nothing — consent stays denied, no banner shown.
+  // If stored === 'denied', do nothing - consent stays denied, no banner shown.
 })();
