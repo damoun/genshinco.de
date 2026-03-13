@@ -44,14 +44,7 @@
     }
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D7SJ1CFN3S"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-D7SJ1CFN3S');
-    </script>
+    <script src="/consent.js" defer></script>
 
     <style>
         :root {
@@ -164,6 +157,33 @@
             is always the source of truth.
         </p>
 
+        <h2>How codes are collected</h2>
+        <p>
+            This site runs on automation. A GitHub Action scrapes known sources for new codes every 6 hours -livestreams,
+            official posts, patch notes, and community reports. When new codes are found, they're automatically committed
+            to the repository and the site updates instantly. No manual work required for most codes.
+        </p>
+        <p>
+            Occasionally, codes pop up from obscure sources (a random tweet, a stream chat message, an email)
+            that the automation doesn't catch. Those get added manually. The pipeline handles the volume; the humans
+            catch the stragglers.
+        </p>
+
+        <h2>Open source</h2>
+        <p>
+            The entire site is open source on <a href="https://github.com/damoun/genshinco.de" target="_blank" rel="noopener">GitHub</a>.
+            No hidden code, no proprietary magic. You can fork it, run it locally, contribute features, or just
+            peek under the hood to see how it works. If you spot a bug, have an idea, or want to help,
+            open an issue or submit a pull request.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+            Have a question, found a bug, or want to suggest a feature? Open an
+            <a href="https://github.com/damoun/genshinco.de/issues" target="_blank" rel="noopener">issue on GitHub</a>.
+            That's where I track everything and where the community can chime in too.
+        </p>
+
     </div>
 
     <footer>
@@ -171,6 +191,8 @@
             <li><a href="/">Home</a></li>
             <li>·</li>
             <li><a href="/about.html">About</a></li>
+            <li>·</li>
+            <li><a href="/guide.html">Guide</a></li>
             <li>·</li>
             <li><a href="/privacy.html">Privacy Policy</a></li>
         </ul>
