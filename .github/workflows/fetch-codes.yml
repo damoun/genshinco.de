@@ -29,13 +29,16 @@ jobs:
             exit 1
           fi
 
+      - name: Update sitemap lastmod
+        run: sed -i "0,/<lastmod>[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}<\/lastmod>/s/<lastmod>[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}<\/lastmod>/<lastmod>$(date -u +%Y-%m-%d)<\/lastmod>/" sitemap.xml
+
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add codes.json
+          git add codes.json sitemap.xml
           staged=$(git diff --cached --name-only)
-          if [ "$staged" != "codes.json" ] && [ -n "$staged" ]; then
+          if [ -n "$staged" ] && [ "$staged" != "codes.json" ] && [ "$staged" != "sitemap.xml" ] && [ "$staged" != "$(printf 'codes.json\nsitemap.xml')" ]; then
             echo "ERROR: unexpected staged files: $staged" >&2
             git reset
             exit 1
