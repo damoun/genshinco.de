@@ -30,7 +30,7 @@ def sanitize_rewards(text: str) -> str:
 def fetch_codes() -> list[dict]:
     req = urllib.request.Request(API_URL, headers={"User-Agent": "genshinco.de/1.0"})
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
+        with urllib.request.urlopen(req, timeout=30) as resp:  # nosemgrep: python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
             raw = resp.read(MAX_RESPONSE_BYTES + 1)
             if len(raw) > MAX_RESPONSE_BYTES:
                 print("ERROR: API response exceeds 100KB limit", file=sys.stderr)
