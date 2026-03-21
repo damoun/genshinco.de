@@ -151,35 +151,10 @@
     </script>
 
     <script src="/consent.js" defer></script>
+    <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
+    <link rel="stylesheet" href="/styles.css">
 
     <style>
-        :root {
-            --bg: #1C1F2E;
-            --bg-card: #252A3D;
-            --bg-card-hover: #2D334A;
-            --text-primary: #A1BECAFF;
-            --text-secondary: #7EB8D6FF;
-            --accent-teal: #4ECDC4;
-            --accent-purple: #9B59B6;
-            --accent-amber: #F39C12;
-            --border: #275E7AFF;
-            --border-card: rgba(78, 205, 196, 0.2);
-            --glow-teal: rgba(78, 205, 196, 0.3);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
         /* Hero */
         .hero {
             background-image: url("/background.png");
@@ -358,12 +333,12 @@
             color: var(--text-primary);
         }
 
-        .info-inner ol {
+        .info-inner ol, .info-inner ul {
             margin-left: 24px;
             margin-bottom: 12px;
         }
 
-        .info-inner ol li {
+        .info-inner ol li, .info-inner ul li {
             margin-bottom: 6px;
         }
 
@@ -375,47 +350,6 @@
         .info-inner a:hover {
             text-decoration: underline;
         }
-
-        /* Footer */
-        footer {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        footer a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: var(--accent-teal);
-        }
-
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 16px;
-            list-style: none;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .footer-sep {
-            color: var(--border);
-        }
     </style>
 
     <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
@@ -425,6 +359,17 @@
 </head>
 
 <body>
+    <nav class="site-nav">
+        <ul>
+            <li><a href="/" aria-current="page">Home</a></li>
+            <li><a href="/beginners-guide.html">Beginner's Guide</a></li>
+            <li><a href="/rewards-guide.html">Rewards Guide</a></li>
+            <li><a href="/event-codes.html">Code History</a></li>
+            <li><a href="/guide.html">Redeem Guide</a></li>
+            <li><a href="/about.html">About</a></li>
+        </ul>
+    </nav>
+
     <main>
         <section class="hero">
             <div class="hero-content">
@@ -438,7 +383,29 @@
             <p class="codes-subtitle">Hit "Redeem" and the code is already filled in on the HoYoverse page. Just log in and confirm.</p>
 
             <div id="codes-grid" class="codes-grid" aria-live="polite">
-                <p id="codes-loading" class="codes-message">Loading codes…</p>
+                <p id="codes-loading" class="codes-message">Loading codes&hellip;</p>
+            </div>
+        </section>
+
+        <section class="quick-links">
+            <h2>Explore Our Guides</h2>
+            <div class="quick-links-grid">
+                <a href="/beginners-guide.html" class="quick-link-card">
+                    <h3>Beginner's Guide</h3>
+                    <p>New to Genshin Impact? Learn about Adventure Rank, elements, Wishes, Resin, and essential tips for your first week in Teyvat.</p>
+                </a>
+                <a href="/rewards-guide.html" class="quick-link-card">
+                    <h3>Rewards &amp; Currency Guide</h3>
+                    <p>Understand every currency in the game: Primogems, Mora, Hero's Wit, Enhancement Ore, and how codes fit into your resource strategy.</p>
+                </a>
+                <a href="/event-codes.html" class="quick-link-card">
+                    <h3>Code History &amp; Patterns</h3>
+                    <p>When do codes drop? How much are they worth per year? Discover the patterns behind livestream codes, event codes, and permanent codes.</p>
+                </a>
+                <a href="/guide.html" class="quick-link-card">
+                    <h3>How to Redeem Codes</h3>
+                    <p>Step-by-step instructions for redeeming codes on the HoYoverse website and in-game, plus common error fixes.</p>
+                </a>
             </div>
         </section>
 
@@ -449,32 +416,34 @@
                     Genshin Impact redeem codes are alphanumeric strings released by HoYoverse, the game's developer. Each code grants free in-game rewards such as Primogems, Mora, Hero's Wit, or Enhancement Ores. Codes are typically distributed during livestreams, patch launches, and community milestones. They expire quickly, often within 12 to 48 hours of release.
                 </p>
 
-                <h2>How to redeem a Genshin Impact code</h2>
-                <ol>
-                    <li>Go to the <a href="https://genshin.hoyoverse.com/en/gift" target="_blank" rel="noopener">HoYoverse gift page</a>, or click "Redeem" on any code above. It pre-fills the code automatically.</li>
-                    <li>Log in to your HoYoverse account.</li>
-                    <li>Select your server and character name.</li>
-                    <li>Click Redeem. Rewards arrive in your in-game mailbox within one minute.</li>
-                </ol>
+                <h2>How to redeem a code</h2>
+                <p>
+                    The fastest way is to click "Redeem" on any code above, which pre-fills the code on the HoYoverse gift page. Just log in, select your server and character, and confirm. You can also redeem codes directly in-game through the Settings menu. For detailed step-by-step instructions for both methods, see our <a href="/guide.html">full redemption guide</a>.
+                </p>
 
                 <h2>Why use GenshinCo.de for codes?</h2>
                 <p>
-                    GenshinCo.de aggregates all active Genshin Impact codes in one place, updated as soon as new codes are released. HoYoverse distributes codes across livestreams, social media, and events, making them easy to miss. This site saves you from searching VODs or subreddits after every patch.
+                    GenshinCo.de aggregates all active Genshin Impact codes in one place, updated as soon as new codes are released. HoYoverse distributes codes across livestreams, social media, and events, making them easy to miss. This site saves you from searching VODs or subreddits after every patch. Our automated pipeline checks for new codes every six hours, and manual additions catch anything the automation misses.
                 </p>
 
                 <h2>Where do codes come from?</h2>
                 <p>
-                    HoYoverse releases codes through several channels. The most reliable source is the version livestream, held roughly every six weeks before a major patch. Each stream typically reveals three codes that expire within 12 to 24 hours. Beyond livestreams, codes appear during in-game events, anniversary celebrations, collaboration promotions, and social media milestones. HoYoverse occasionally distributes compensation codes via in-game mail when server issues or bugs affect players. Some promotional codes are region-specific, but most work globally.
+                    HoYoverse releases codes through several channels. The most reliable source is the version livestream, held roughly every six weeks before a major patch. Each stream typically reveals three codes that expire within 12 to 24 hours. Beyond livestreams, codes appear during in-game events, anniversary celebrations, collaboration promotions, and social media milestones. HoYoverse occasionally distributes compensation codes via in-game mail when server issues or bugs affect players. Some promotional codes are region-specific, but most work globally. For a detailed breakdown, see our <a href="/event-codes.html">Code History and Patterns</a> page.
                 </p>
 
                 <h2>Types of rewards you can get</h2>
                 <p>
-                    The most sought-after reward is Primogems, the premium currency used for Wishes (the gacha system). 160 Primogems equals one Wish, and codes typically grant 60 to 100 Primogems each. Other common rewards include Mora (the universal in-game currency used for leveling characters, talents, and weapons), Hero's Wit and Adventurer's Experience (character EXP materials), Mystic Enhancement Ore (weapon EXP material), and consumable food items that restore HP or boost stats. During special events, codes may also grant exclusive namecard cosmetics, furniture for the Serenitea Pot housing system, or limited-time event currency.
+                    The most sought-after reward is Primogems, the premium currency used for Wishes (the gacha system). 160 Primogems equals one Wish, and codes typically grant 60 to 100 Primogems each. Other common rewards include Mora (the universal in-game currency used for leveling characters, talents, and weapons), Hero's Wit and Adventurer's Experience (character EXP materials), Mystic Enhancement Ore (weapon EXP material), and consumable food items that restore HP or boost stats. During special events, codes may also grant exclusive namecard cosmetics, furniture for the Serenitea Pot housing system, or limited-time event currency. Learn more about every reward type in our <a href="/rewards-guide.html">Rewards Guide</a>.
                 </p>
 
                 <h2>How often are new codes released?</h2>
                 <p>
-                    New codes follow a predictable rhythm tied to Genshin Impact's six-week patch cycle. Each version livestream drops three codes, and occasional event codes appear between patches. Anniversary periods (late September) and Lantern Rite (Chinese New Year) tend to be especially generous. A handful of permanent codes exist -GENSHINGIFT is the most well-known -but most expire quickly. On average, expect three to six new codes per month. Bookmarking this site means you won't miss any of them.
+                    New codes follow a predictable rhythm tied to Genshin Impact's six-week patch cycle. Each version livestream drops three codes, and occasional event codes appear between patches. Anniversary periods (late September) and Lantern Rite (Chinese New Year) tend to be especially generous. A handful of permanent codes exist &mdash; GENSHINGIFT is the most well-known &mdash; but most expire quickly. On average, expect three to six new codes per month. Bookmarking this site means you won't miss any of them.
+                </p>
+
+                <h2>New to Genshin Impact?</h2>
+                <p>
+                    If you are just starting out, codes are one of the easiest ways to boost your early progress. Redeem every active code to stock up on Primogems for Wishes and materials for leveling your characters. Our <a href="/beginners-guide.html">Beginner's Guide</a> covers everything new players need to know, from the element system and team building to Resin management and daily routines. Start there if you want to make the most of your first week in Teyvat.
                 </p>
             </div>
         </div>
@@ -484,11 +453,19 @@
         <ul class="footer-nav">
             <li><a href="/">Home</a></li>
             <li><span class="footer-sep">·</span></li>
+            <li><a href="/beginners-guide.html">Beginner's Guide</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="/rewards-guide.html">Rewards Guide</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="/event-codes.html">Code History</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="/guide.html">Redeem Guide</a></li>
+            <li><span class="footer-sep">·</span></li>
             <li><a href="/about.html">About</a></li>
             <li><span class="footer-sep">·</span></li>
-            <li><a href="/guide.html">Guide</a></li>
-            <li><span class="footer-sep">·</span></li>
             <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
         </ul>
         <ul class="footer-links">
             <li><a href="https://genshin.hoyoverse.com/en/" target="_blank" rel="noopener">Official Genshin Impact</a></li>
@@ -499,7 +476,7 @@
             <li><span class="footer-sep">·</span></li>
             <li><a href="https://genshin.gg/" target="_blank" rel="noopener">Genshin.GG</a></li>
         </ul>
-        <p>© 2026 <a href="https://genshinco.de">GenshinCo.de</a>. All rights reserved.</p>
+        <p>&copy; 2026 <a href="https://genshinco.de">GenshinCo.de</a>. All rights reserved.</p>
     </footer>
 
     <script>
