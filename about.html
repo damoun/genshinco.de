@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About GenshinCo.de, a fan site tracking active Genshin Impact redeem codes.">
+    <meta name="description" content="About GenshinCo.de, a fan site tracking active Genshin Impact redeem codes. Learn how it works, why it exists, and how codes are collected.">
     <title>About | GenshinCo.de</title>
     <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
     <link rel="canonical" href="https://genshinco.de/about.html">
@@ -28,113 +28,74 @@
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "About GenshinCo.de",
-        "description": "GenshinCo.de is a fan-made tracker for active Genshin Impact redeem codes. Not affiliated with HoYoverse.",
-        "url": "https://genshinco.de/about.html",
-        "publisher": {
-            "@type": "Organization",
-            "name": "GenshinCo.de",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://genshinco.de/preview.png"
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About GenshinCo.de",
+            "description": "GenshinCo.de is a fan-made tracker for active Genshin Impact redeem codes. Not affiliated with HoYoverse.",
+            "url": "https://genshinco.de/about.html",
+            "publisher": {
+                "@type": "Organization",
+                "name": "GenshinCo.de",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://genshinco.de/preview.png"
+                }
             }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://genshinco.de/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "About",
+                    "item": "https://genshinco.de/about.html"
+                }
+            ]
         }
-    }
+    ]
     </script>
 
     <script src="/consent.js" defer></script>
-
-    <style>
-        :root {
-            --bg: #1C1F2E;
-            --bg-card: #252A3D;
-            --text-primary: #A1BECAFF;
-            --text-secondary: #7EB8D6FF;
-            --accent-teal: #4ECDC4;
-            --border-card: rgba(78, 205, 196, 0.2);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-primary);
-            line-height: 1.7;
-        }
-
-        .page-header {
-            background: var(--bg-card);
-            border-bottom: 1px solid var(--border-card);
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 2rem;
-            color: var(--accent-teal);
-        }
-
-        .page-header p {
-            color: var(--text-secondary);
-            margin-top: 8px;
-        }
-
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        h2 {
-            font-size: 1.3rem;
-            color: var(--accent-teal);
-            margin-top: 40px;
-            margin-bottom: 12px;
-        }
-
-        p { margin-bottom: 12px; }
-
-        a { color: var(--accent-teal); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid var(--border-card);
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        footer a { color: var(--text-secondary); }
-        footer a:hover { color: var(--accent-teal); }
-
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            list-style: none;
-            margin-bottom: 16px;
-        }
-    </style>
-
+    <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
+    <link rel="stylesheet" href="/styles.css">
     <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
+    <nav class="site-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/beginners-guide.html">Beginner's Guide</a></li>
+            <li><a href="/rewards-guide.html">Rewards Guide</a></li>
+            <li><a href="/event-codes.html">Code History</a></li>
+            <li><a href="/guide.html">Redeem Guide</a></li>
+            <li><a href="/about.html" aria-current="page">About</a></li>
+        </ul>
+    </nav>
+
     <div class="page-header">
         <h1>About GenshinCo.de</h1>
         <p>A fan-made code tracker. Nothing more, nothing less.</p>
     </div>
 
     <div class="content">
+        <h2>Why this site exists</h2>
         <p>
             I got tired of missing codes because I wasn't watching the right stream at the right time.
+            HoYoverse drops codes during version livestreams, on social media, and through random events,
+            but there is no single official place where all active codes are listed. I would find out about
+            a code hours after it expired, or see it mentioned on Reddit buried under hundreds of comments.
             So I made this page. It's a simple list of active Genshin Impact redeem codes, updated
             whenever new ones come out. No accounts, no noise.
         </p>
@@ -143,8 +104,29 @@
         <p>
             Codes get picked up from HoYoverse's livestreams, their social posts, and patch notes.
             Each one is listed with what it gives so you can decide if it's worth the 30-second detour.
-            The "Redeem" button goes straight to the HoYoverse gift page with the code pre-filled,
+            The "Redeem" button goes straight to the HoYoverse gift page with the code pre-filled &mdash;
             you just log in and confirm. This site never touches your account.
+        </p>
+
+        <h2>How we're different</h2>
+        <p>
+            There are plenty of places that list Genshin Impact codes. What makes GenshinCo.de different
+            is the automation-first approach combined with manual verification. Our GitHub Action checks
+            known code sources every six hours, so new codes appear on the site without anyone having to
+            manually update a spreadsheet. But automation has blind spots, so we also monitor less common
+            channels and add codes manually when needed.
+        </p>
+        <p>
+            The site is designed to be fast and focused. No login walls, no pop-ups asking you to subscribe,
+            no auto-playing videos. You come here for codes, you get codes, and you leave. The one-click
+            redeem links pre-fill the code on HoYoverse's official page, saving you from typing alphanumeric
+            strings on a phone keyboard.
+        </p>
+        <p>
+            Beyond codes, we also publish guides to help players understand the game's reward systems.
+            Our <a href="/beginners-guide.html">Beginner's Guide</a> covers the essentials for new players,
+            the <a href="/rewards-guide.html">Rewards Guide</a> explains every currency in the game, and
+            the <a href="/event-codes.html">Code History</a> page analyzes when and how codes are distributed.
         </p>
 
         <h2>Not affiliated with HoYoverse</h2>
@@ -161,7 +143,7 @@
 
         <h2>How codes are collected</h2>
         <p>
-            This site runs on automation. A GitHub Action scrapes known sources for new codes every 6 hours -livestreams,
+            This site runs on automation. A GitHub Action scrapes known sources for new codes every 6 hours &mdash; livestreams,
             official posts, patch notes, and community reports. When new codes are found, they're automatically committed
             to the repository and the site updates instantly. No manual work required for most codes.
         </p>
@@ -185,20 +167,36 @@
             <a href="https://github.com/damoun/genshinco.de/issues" target="_blank" rel="noopener">issue on GitHub</a>.
             That's where I track everything and where the community can chime in too.
         </p>
-
     </div>
 
     <footer>
         <ul class="footer-nav">
             <li><a href="/">Home</a></li>
-            <li>·</li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="/beginners-guide.html">Beginner's Guide</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="/rewards-guide.html">Rewards Guide</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="/event-codes.html">Code History</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="/guide.html">Redeem Guide</a></li>
+            <li><span class="footer-sep">·</span></li>
             <li><a href="/about.html">About</a></li>
-            <li>·</li>
-            <li><a href="/guide.html">Guide</a></li>
-            <li>·</li>
+            <li><span class="footer-sep">·</span></li>
             <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
         </ul>
-        <p>© 2026 <a href="https://genshinco.de">GenshinCo.de</a>. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="https://genshin.hoyoverse.com/en/" target="_blank" rel="noopener">Official Genshin Impact</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="https://www.reddit.com/r/Genshin_Impact/" target="_blank" rel="noopener">Reddit Community</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="https://game8.co/games/Genshin-Impact" target="_blank" rel="noopener">Game8 Guides</a></li>
+            <li><span class="footer-sep">·</span></li>
+            <li><a href="https://genshin.gg/" target="_blank" rel="noopener">Genshin.GG</a></li>
+        </ul>
+        <p>&copy; 2026 <a href="https://genshinco.de">GenshinCo.de</a>. All rights reserved.</p>
     </footer>
 </body>
 
