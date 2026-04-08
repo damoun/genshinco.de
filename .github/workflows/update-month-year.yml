@@ -1,0 +1,41 @@
+name: Update Month/Year
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5.6.0
+        with:
+          python-version: '3.12'
+
+      - name: Update month/year
+        run: python scripts/update_month_year.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          FILES="index.html privacy.html terms.html beginners-guide.html rewards-guide.html event-codes.html sitemap.xml"
+          git add $FILES
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          MONTH_YEAR=$(python -c "
+          from datetime import date, timedelta
+          d = date.today()
+          nxt = (d.replace(day=1) + timedelta(days=32)).replace(day=1)
+          print(nxt.strftime('%B %Y'))
+          ")
+          git commit -m "chore: update month/year to ${MONTH_YEAR}"
+          git push
