@@ -81,8 +81,10 @@ def update_sitemap(path: Path, new_date: str) -> bool:
 
 
 def main() -> None:
+    import os
     today = date.today()
-    if not is_last_day_of_month(today):
+    force = os.environ.get("FORCE_UPDATE", "").lower() in ("1", "true")
+    if not force and not is_last_day_of_month(today):
         print(f"Today ({today}) is not the last day of the month. Nothing to do.")
         sys.exit(0)
 
