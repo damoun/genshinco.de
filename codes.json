@@ -33,5 +33,10 @@
     "code": "WILLTOWIN",
     "rewards": "Primogem*100;Mora*50000",
     "source": "hoyo-codes"
+  },
+  {
+    "code": "PFY1S40I88T9",
+    "rewards": "Primogem*60;Adventurer's Experience*5",
+    "source": "hoyo-codes"
   }
 ]
