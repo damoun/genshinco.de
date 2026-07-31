@@ -1,5 +1,15 @@
 [
   {
+    "code": "ONTOSNEZHNAYA",
+    "rewards": "Primogem*100;Hero's Wit*5",
+    "source": "hoyo-codes"
+  },
+  {
+    "code": "ODETTE0812",
+    "rewards": "Primogem*100;Mora*50000",
+    "source": "hoyo-codes"
+  },
+  {
     "code": "LEGEDILJKSGM",
     "rewards": "Primogem*60;Adventurer's Experience*5",
     "source": "hoyo-codes"
@@ -7,6 +17,11 @@
   {
     "code": "UIVIBUQM6Q8A",
     "rewards": "Mora*10000;Adventurer's Experience*10;Fine Enhancement Ore*5;Jueyun Chili Chicken*5;Stir-Fried Fish Noodles*5",
+    "source": "hoyo-codes"
+  },
+  {
+    "code": "EVERWINTER",
+    "rewards": "Primogem*100;Mystic Enhancement Ore*10",
     "source": "hoyo-codes"
   },
   {
