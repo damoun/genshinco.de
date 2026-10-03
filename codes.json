@@ -15,8 +15,13 @@
     "source": "hoyo-codes"
   },
   {
+    "code": "DATG5HG1PL89",
+    "rewards": "Mora*10000;Adventurer's Experience*10;Fine Enhancement Ore*5;Stir-Fried Fish Noodles*5;Jueyun Chili Chicken*5",
+    "source": "hoyo-codes"
+  },
+  {
     "code": "6LS3F3LS5K87",
-    "rewards": "",
+    "rewards": "Primogem*20;Geode of Replication*160",
     "source": "hoyo-codes"
   },
   {
@@ -42,11 +47,6 @@
   {
     "code": "PLDXI8VFKI7C",
     "rewards": "",
-    "source": "hoyo-codes"
-  },
-  {
-    "code": "VESNAONPATROL",
-    "rewards": "Primogem*40;Mora*20000;Hero's Wit*3",
     "source": "hoyo-codes"
   }
 ]
