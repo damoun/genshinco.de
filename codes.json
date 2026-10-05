@@ -1,5 +1,10 @@
 [
   {
+    "code": "NEEIJB764CA3",
+    "rewards": "Primogem*60",
+    "source": "hoyo-codes"
+  },
+  {
     "code": "OPERACOLLAB",
     "rewards": "Primogem*30;Mora*20000;Hero's Wit*2",
     "source": "hoyo-codes"
@@ -42,11 +47,6 @@
   {
     "code": "Y6JYMKV6JKSL",
     "rewards": "Primogem*60;Adventurer's Experience*5",
-    "source": "hoyo-codes"
-  },
-  {
-    "code": "PLDXI8VFKI7C",
-    "rewards": "",
     "source": "hoyo-codes"
   }
 ]
